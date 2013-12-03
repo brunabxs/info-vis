@@ -1,4 +1,4 @@
-# Django settings for caca_ao_tesouro project.
+# Django settings for treasure_hunt project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -106,10 +106,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'caca_ao_tesouro.urls'
+ROOT_URLCONF = 'treasure_hunt.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'caca_ao_tesouro.wsgi.application'
+WSGI_APPLICATION = 'treasure_hunt.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -125,7 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'caca_ao_tesouro'
+    'treasure_hunt'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
