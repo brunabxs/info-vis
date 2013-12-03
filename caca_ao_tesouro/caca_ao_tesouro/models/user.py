@@ -7,3 +7,16 @@ class User(models.Model):
   class Meta:
     app_label = 'caca_ao_tesouro'
 
+
+  @classmethod
+  def validate_user(cls, name, password):
+      user = cls.objects.filter(name=name, password=password)
+
+      if user:
+        return True
+      else:
+        return False
+
+
+  def __str__(self):
+    return "{0}:{1}".format(self.name, self.password)
