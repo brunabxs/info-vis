@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-from caca_ao_tesouro.views.login import login
+from caca_ao_tesouro.views.login import login, home
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,5 +16,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+  url(r'^home/', home),
   url(r'^login/$', login),
 )
