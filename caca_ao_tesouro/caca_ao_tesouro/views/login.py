@@ -5,11 +5,9 @@ from django.shortcuts import render_to_response
 from django.views.decorators.http import require_POST, require_GET
 from django.core.context_processors import csrf
 
-from caca_ao_tesouro.models import User
-
 @require_POST
 def login(request):
-  valid = User.validate_user(name=request.POST['name'], password=request.POST['password'])
+  valid = validate_user(username=request.POST['name'], password=request.POST['password'])
 
   return HttpResponse(valid)
 
@@ -21,3 +19,12 @@ def home(request):
 
 def new_user(request):
   from caca_ao_tesouro.models.user import User
+
+
+def validate_user(username, password):
+  from django.contrib.auth.models import User
+
+  if User.objects.filter(username=username, password=password):
+    return True
+  else:
+    return False
