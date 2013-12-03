@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Caça Ao Tesouro </title>
+	</head>
+	<body>
+		<form name="login" action="/login/" method="POST">
+      {% csrf_token %}			
+      <input name="name" type="text"/>
+			<input name="password" type="password"/>
+			<input type="submit" value="Logar"/>
+		</form>
+	</body>
+</html>
