@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-from caca_ao_tesouro.views.login import login, home
+from caca_ao_tesouro.views.login import login, home, user_logout
 
 urlpatterns = patterns('',
     # Examples:
@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
   url(r'^home/', home),
   url(r'^login/$', login),
+  url(r'^logout/$', user_logout),
 )
