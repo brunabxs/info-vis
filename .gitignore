@@ -37,3 +37,6 @@ nosetests.xml
 
 # Temp Files
 *~
+
+# Sqlite Database file
+*.sqlite3
