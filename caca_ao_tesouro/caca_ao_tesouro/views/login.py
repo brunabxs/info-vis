@@ -4,6 +4,16 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.http import require_POST, require_GET
 from django.core.context_processors import csrf
+from django.contrib.auth.decorators import login_required
+
+@require_GET
+@login_required
+def user_logout(request):
+  from django.contrib.auth import logout
+  logout(request)
+  c = {}
+  c.update(csrf(request))
+  return render_to_response("index.html", c)
 
 @require_POST
 def login(request):
@@ -15,10 +25,10 @@ def login(request):
     login(request=request, user=user)
     message = u'Logado!'
   else:
-    create_new_user(username=request.POST['name'], password=request.POST['password'])
+    user = create_new_user(username=request.POST['name'], password=request.POST['password'])
     message = u'Criado novo usuário!'
 
-  return HttpResponse(message)
+  return render_to_response("home.html", {'username': user.username})
 
 @require_GET
 def home(request):
@@ -32,3 +42,5 @@ def create_new_user(username, password):
   # the leap of the cat
   user.set_password(password)
   user.save()
+
+  return user
