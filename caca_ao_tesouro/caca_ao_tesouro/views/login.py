@@ -7,9 +7,18 @@ from django.core.context_processors import csrf
 
 @require_POST
 def login(request):
-  valid = validate_user(username=request.POST['name'], password=request.POST['password'])
+  from django.contrib.auth import authenticate, login
 
-  return HttpResponse(valid)
+  print request.POST['name'], request.POST['password']
+  user = authenticate(username=request.POST['name'], password=request.POST['password'])
+  if user is not None:
+    login(request=request, user=user)
+    message = u'Logado!'
+  else:
+    create_new_user(username=request.POST['name'], password=request.POST['password'])
+    message = u'Criado novo usuário!'
+
+  return HttpResponse(message)
 
 @require_GET
 def home(request):
@@ -17,14 +26,9 @@ def home(request):
   c.update(csrf(request))
   return render_to_response("index.html", c)
 
-def new_user(request):
-  from caca_ao_tesouro.models.user import User
-
-
-def validate_user(username, password):
+def create_new_user(username, password):
   from django.contrib.auth.models import User
-
-  if User.objects.filter(username=username, password=password):
-    return True
-  else:
-    return False
+  user = User(username=username)
+  # the leap of the cat
+  user.set_password(password)
+  user.save()
