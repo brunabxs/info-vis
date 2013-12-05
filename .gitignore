@@ -40,3 +40,4 @@ nosetests.xml
 
 # Sqlite Database file
 *.sqlite3
+*.swp
