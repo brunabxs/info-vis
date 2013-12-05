@@ -19,7 +19,6 @@ def user_logout(request):
 def login(request):
   from django.contrib.auth import authenticate, login
 
-  print request.POST['name'], request.POST['password']
   user = authenticate(username=request.POST['name'], password=request.POST['password'])
   if user is not None:
     login(request=request, user=user)
