@@ -3,6 +3,26 @@
 		<title>Caça Ao Tesouro </title>
 	</head>
 	<body>
+        <h3> Dicas: </h3>
+        <table id="tabelaDicas">
+            <thead>
+                <th>Nome </th>
+                <th>Ação </th>
+            </thead>
+            <tbody>
+        {% for tip in tips %}
+            <tr> 
+                <td>{{ tip.name }} </td>
+                <td><a href="/ver_dica/{{tip.id}}/">Ver Dica </a> </td>
+            </tr>
+        {% empty %}
+            <tr>
+               <td colspan=2> Não foram lhe atribuídas dicas. </td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+        
     <h1> Bem vindo, {{ username }}! </h1> </br>
   <a href="/logout/"> Logout </a>    		
 	</body>
