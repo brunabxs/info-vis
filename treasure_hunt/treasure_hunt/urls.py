@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 from treasure_hunt.views.login import login, home, user_logout
+from treasure_hunt.views.object_tip import show_tip
 
 urlpatterns = patterns('',
 
@@ -13,4 +14,5 @@ urlpatterns = patterns('',
   url(r'^home/', home),
   url(r'^login/$', login),
   url(r'^logout/$', user_logout),
+  url(r'^ver_dica/(?P<id>\d+)/$', show_tip),
 )
