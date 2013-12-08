@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Caça Ao Tesouro </title>
+	</head>
+	<body>
+        <h4>{{ tip_name }} </h4>
+        <p>{{ tip_description  }} </p>
+		<form name="scan_tip" action="/scan_tip/" method="POST">
+            {% csrf_token %}			
+            <input type="file" name="qrcode_scan" accept="image/*" capture="camera"/>
+            <input type="submit" value="Enviar"/>
+		</form>
+	</body>
+</html>
